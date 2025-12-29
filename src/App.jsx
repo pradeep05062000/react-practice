@@ -1,53 +1,24 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import Counter from './components/Counter'
-import UserCard from './components/UserCard'
-
-
-const users = [
-  {
-    id: 1,
-    name: "John Doe 1",
-    age: 30,
-    city: "New York"
-  },
-  {
-    id: 2,
-    name: "Pradeep",
-    age: 25,
-    city: "Los Angeles"
-  },
-  {
-    id: 3,
-    name: "Ingle",
-    age: 25,
-    city: "Los Angeles"
-  }
-]
-
+import { BrowserRouter as Routers, Routes, Route, Link } from 'react-router-dom';
+import { Home } from "./pages/Home";
+import About from "./pages/About";
 function App() {
-  const [searchText, setSearchText] = useState("")
-
-
-  const handleSearch = (e) => {
-    const searchValue = e.target.value
-    setSearchText(searchValue)
-  }
-
-
-  const filteredUsers = users.filter((user) => user.name.toLocaleLowerCase().includes(searchText.toLocaleLowerCase()))
-
-  const usersData = filteredUsers.map(user => {
-    return <UserCard key={user.id} user={user} />
-  })
 
   return (
     <>
-      <input value={searchText} onChange={handleSearch} />
-      {
-        usersData
-      }
-      <Counter />
+      <Routers>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+
+        <Link to="/" >
+          Home
+        </Link>
+        <Link to="/about" >
+          About
+        </Link>
+      </Routers>
+
     </>
   )
 }

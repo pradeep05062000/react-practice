@@ -4,8 +4,8 @@ export default function UserCard({ user }) {
     return (
         <div>
             <p>Name: {user.name}</p>
-            <p>Age: {user.age}</p>
-            <p>City: {user.city}</p>
+            <p>Age: {user.username}</p>
+            <p>City: {user.email}</p>
         </div>
     )
 }
